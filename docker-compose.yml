@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./web
+      dockerfile: ../docker_compose/app/Dockerfile
+    image: jsl-app
+    container_name: jsl-app
+    restart: unless-stopped
+    tty: true
+    expose:
+      - "8080"
+    volumes:
+      - ./web:/var/www/app
+    env_file:
+      - ./docker_compose/app/.env
+    environment:
+      DEBUG: 'true'
+      APP_NAME: 'JoselApp'
+    # command: gunicorn --reload wsgi:app -w 1 -b 0.0.0.0:8080
+    networks:
+      - jsl-network
+
+networks:
+  jsl-network:
+    driver: bridge

@@ -1,0 +1,15 @@
+*.db
+.DS_Store
+.idea
+venv
+env
+__pycache__
+.venv
+.cache
+/*.tar
+/*.rar
+node_modules*
+node_modules/*
+/*/node_modules/*
+
+/web/*_keys
